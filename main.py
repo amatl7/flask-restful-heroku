@@ -40,23 +40,23 @@ api.add_resource(Sum, '/add/<int:a>,<int:b>')
 
 # api.add_resource(executeQuery, '/data/<queryStr>')
 
-# class getItemTable (Resource):
-#     def get(self):
-#         try:
-#             cursor.execute('SELECT * FROM itemtable')
-#             myArr = []
+class getItemTable (Resource):
+    def get(self):
+        try:
+            cursor.execute('SELECT * FROM itemtable')
+            myArr = []
 
-#             for query in cursor:
-#                 myArr.append(str(query))
-#             # Returning an api for showing in  reactjs
-#             return {
-#                 'QueryResult':myArr
-#                 }
-#         except:
-#             return []
+            for query in cursor:
+                myArr.append(str(query))
+            # Returning an api for showing in  reactjs
+            return {
+                'QueryResult':myArr
+                }
+        except:
+            return []
 
 
-# api.add_resource(getItemTable, '/data/itemtable')
+api.add_resource(getItemTable, '/data/itemtable')
 
 # class getMenuTable (Resource):
 #     def get(self):

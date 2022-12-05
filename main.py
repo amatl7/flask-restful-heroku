@@ -20,92 +20,92 @@ class status (Resource):
 
 api.add_resource(status, '/')
 
-class executeQuery (Resource):
-    def get(self, queryStr):
-        try:
-            cursor.execute(queryStr)
-            myArr = []
-            myStr = ""
+# class executeQuery (Resource):
+#     def get(self, queryStr):
+#         try:
+#             cursor.execute(queryStr)
+#             myArr = []
+#             myStr = ""
 
-            for query in cursor:
-                myArr.append(str(query))
-                myStr += str(query) + '.'
-            return {'QueryResult':myArr}
-        except:
-            return []
-
-
-api.add_resource(executeQuery, '/data/<queryStr>')
-
-class getItemTable (Resource):
-    def get(self):
-        try:
-            cursor.execute('SELECT * FROM itemtable')
-            myArr = []
-
-            for query in cursor:
-                myArr.append(str(query))
-            # Returning an api for showing in  reactjs
-            return {
-                'QueryResult':myArr
-                }
-        except:
-            return []
+#             for query in cursor:
+#                 myArr.append(str(query))
+#                 myStr += str(query) + '.'
+#             return {'QueryResult':myArr}
+#         except:
+#             return []
 
 
-api.add_resource(getItemTable, '/data/itemtable')
+# api.add_resource(executeQuery, '/data/<queryStr>')
 
-class getMenuTable (Resource):
-    def get(self):
-        try:
-            cursor.execute('SELECT * FROM menutable')
-            myArr = []
+# class getItemTable (Resource):
+#     def get(self):
+#         try:
+#             cursor.execute('SELECT * FROM itemtable')
+#             myArr = []
 
-            for query in cursor:
-                myArr.append(str(query))
-            # Returning an api for showing in  reactjs
-            return {
-                'QueryResult':myArr
-                }
-        except:
-            return []
-
-
-api.add_resource(getMenuTable, '/data/menutable')
-
-class getOrderTable (Resource):
-    def get(self):
-        try:
-            cursor.execute('SELECT * FROM ordertable')
-            myArr = []
-
-            for query in cursor:
-                myArr.append(str(query))
-            # Returning an api for showing in  reactjs
-            return {
-                'QueryResult':myArr
-                }
-        except:
-            return []
+#             for query in cursor:
+#                 myArr.append(str(query))
+#             # Returning an api for showing in  reactjs
+#             return {
+#                 'QueryResult':myArr
+#                 }
+#         except:
+#             return []
 
 
-api.add_resource(getOrderTable, '/data/ordertable')
+# api.add_resource(getItemTable, '/data/itemtable')
 
-class runUpdate (Resource):
-    def get(self, queryStr):
-        try:
-            cursor.execute(queryStr)
+# class getMenuTable (Resource):
+#     def get(self):
+#         try:
+#             cursor.execute('SELECT * FROM menutable')
+#             myArr = []
 
-            # Returning an api for showing in  reactjs
-            connection.commit()
-            return {
-                'QueryResult':'Success'
-                }
-        except:
-            return 'Query failed'
+#             for query in cursor:
+#                 myArr.append(str(query))
+#             # Returning an api for showing in  reactjs
+#             return {
+#                 'QueryResult':myArr
+#                 }
+#         except:
+#             return []
 
 
-api.add_resource(runUpdate, '/result/<queryStr>')
+# api.add_resource(getMenuTable, '/data/menutable')
+
+# class getOrderTable (Resource):
+#     def get(self):
+#         try:
+#             cursor.execute('SELECT * FROM ordertable')
+#             myArr = []
+
+#             for query in cursor:
+#                 myArr.append(str(query))
+#             # Returning an api for showing in  reactjs
+#             return {
+#                 'QueryResult':myArr
+#                 }
+#         except:
+#             return []
+
+
+# api.add_resource(getOrderTable, '/data/ordertable')
+
+# class runUpdate (Resource):
+#     def get(self, queryStr):
+#         try:
+#             cursor.execute(queryStr)
+
+#             # Returning an api for showing in  reactjs
+#             connection.commit()
+#             return {
+#                 'QueryResult':'Success'
+#                 }
+#         except:
+#             return 'Query failed'
+
+
+# api.add_resource(runUpdate, '/result/<queryStr>')
 
 if __name__ == '__main__':
     app.run()

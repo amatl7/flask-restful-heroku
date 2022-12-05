@@ -9,6 +9,17 @@ app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
+
+class status (Resource):
+    def get(self):
+        try:
+            return {'data': 'Api is Running'}
+        except:
+            return {'data': 'An Error Occurred during fetching Api'}
+
+
+api.add_resource(status, '/')
+
 class executeQuery (Resource):
     def get(self, queryStr):
         try:

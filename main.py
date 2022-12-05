@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
 from flask_cors import CORS
-import psycopg2
+#import psycopg2
 
 
 app = Flask(__name__)

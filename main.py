@@ -7,8 +7,6 @@ import psycopg2
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
-connection = psycopg2.connect(host='csce-315-db.engr.tamu.edu', database='csce315_912_11', user='csce315_912_matl', password='1')
-cursor = connection.cursor()
 
 
 class status (Resource):
@@ -46,6 +44,8 @@ api.add_resource(Sum, '/add/<int:a>,<int:b>')
 
 class getItemTable (Resource):
     def get(self):
+        connection = psycopg2.connect(host='csce-315-db.engr.tamu.edu', database='csce315_912_11', user='csce315_912_matl', password='1')
+        cursor = connection.cursor()
         try:
             cursor.execute('SELECT * FROM itemtable')
             myArr = []
